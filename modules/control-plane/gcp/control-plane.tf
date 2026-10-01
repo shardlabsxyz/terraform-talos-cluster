@@ -161,7 +161,7 @@ module "control_plane_instance_template" {
 
 module "control_plane_mig" {
   source             = "terraform-google-modules/vm/google//modules/mig"
-  version            = "~> 13.0"
+  version            = "~> 15.0"
   region             = var.region
   project_id         = var.project_id
   target_size        = var.control_plane.target_size

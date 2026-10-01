@@ -131,7 +131,7 @@ module "node_pool_instance_template" {
 module "node_pool_mig" {
   for_each          = var.node_pools
   source            = "terraform-google-modules/vm/google//modules/mig"
-  version           = "~> 13.0"
+  version           = "~> 15.0"
   region            = coalesce(each.value.region, var.region)
   project_id        = var.project_id
   target_size       = each.value.target_size
