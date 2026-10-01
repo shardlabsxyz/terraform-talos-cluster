@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+      - release
   workflow_dispatch:
 
 permissions:
@@ -90,3 +91,23 @@ jobs:
           terraform-version: ${{ steps.minMax.outputs.maxVersion }}
           terraform-docs-version: ${{ env.TERRAFORM_DOCS_VERSION }}
           tflint-version: ${{ env.TFLINT_VERSION }}
+
+  preCommitChecks:
+    name: Pre-commit checks
+    if: ${{ always() }}
+    needs:
+      - collectInputs
+      - preCommitMinVersions
+      - preCommitMaxVersion
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every pre-commit job to pass
+        env:
+          COLLECT_RESULT: ${{ needs.collectInputs.result }}
+          MIN_RESULT: ${{ needs.preCommitMinVersions.result }}
+          MAX_RESULT: ${{ needs.preCommitMaxVersion.result }}
+        run: |
+          test "$COLLECT_RESULT" = success
+          test "$MIN_RESULT" = success
+          test "$MAX_RESULT" = success

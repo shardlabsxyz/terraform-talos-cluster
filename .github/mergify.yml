@@ -2,8 +2,10 @@ pull_request_rules:
   - name: Automatic merge on approval
     conditions:
       - base = main
-      - "#approved-reviews-by >= 1"
-      - check-success = Max TF pre-commit
+      # A bot approval must not bypass the Renovate eligibility rules below.
+      - approved-reviews-by ~= ^(?!.*\[bot\]$).+
+      - "#changes-requested-reviews-by = 0"
+      - check-success = Pre-commit checks
       - check-success = Validate PR title
       - -draft
       - label != do-not-merge
@@ -11,10 +13,13 @@ pull_request_rules:
       merge:
         method: squash
 
-  - name: Automatically approve minor/patch Renovate PRs
+  - name: Automatically approve eligible Renovate PRs
     conditions:
       - base = main
       - author = renovate[bot]
+      - check-success = Pre-commit checks
+      - check-success = Validate PR title
+      - "#changes-requested-reviews-by = 0"
       - -draft
       - label != do-not-merge
       - label = automerge-candidate
@@ -29,8 +34,9 @@ pull_request_rules:
     conditions:
       - base = main
       - author = renovate[bot]
-      - check-success = Max TF pre-commit
+      - check-success = Pre-commit checks
       - check-success = Validate PR title
+      - "#changes-requested-reviews-by = 0"
       - -draft
       - label != do-not-merge
       - label = automerge-candidate
@@ -43,10 +49,14 @@ pull_request_rules:
   - name: Automatic merge on approval release
     conditions:
       - base = release
-      - "#approved-reviews-by >= 1"
+      - approved-reviews-by ~= ^(?!.*\[bot\]$).+
+      - "#changes-requested-reviews-by = 0"
+      - check-success = Pre-commit checks
+      - check-success = Validate PR title
       - -draft
+      - label != do-not-merge
     actions:
       merge:
-        method: merge
+        method: rebase
 merge_protections_settings:
   reporting_method: check-runs

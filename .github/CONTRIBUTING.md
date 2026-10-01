@@ -85,6 +85,29 @@ git commit -m "docs: improve AWS module examples"
 4. Wait for CI checks to pass
 5. Address any review feedback
 
+### Dependency Updates and Automatic Merging
+
+Renovate opens dependency PRs and adds update labels. Mergify handles approval and
+merging, so Renovate's `automerge` and `platformAutomerge` settings stay disabled.
+
+- GitHub Actions, mise tools, and pre-commit hooks receive `automerge-candidate`
+  for minor, patch, digest, and digest-pinning updates.
+- Terraform provider/module updates and major updates require human approval.
+- Mergify approves eligible Renovate PRs only after `Pre-commit checks` and
+  `Validate PR title` succeed. The pre-commit check requires directory discovery,
+  the entire minimum-Terraform matrix, and maximum-Terraform checks to pass.
+- Drafts, requested changes, and `do-not-merge` block automatic approval and
+  merging. Removing `automerge-candidate`, or adding `update-major` or
+  `breaking-change`, blocks merging through the Renovate rule. The general merge
+  rule requires a human approval, so an earlier bot approval cannot bypass this.
+- Approved PRs are squash-merged into `main`. PRs into `release` require the same
+  checks and a human approval, and use rebase to retain individual commit messages.
+
+To enforce CI for manual merges too, configure the GitHub ruleset for `main` and
+`release` to require `Pre-commit checks` and `Validate PR title` from GitHub Actions
+after these checks have run on each branch. Keep the existing approval requirement;
+Mergify supplies that approval for eligible Renovate updates.
+
 ## Development Guidelines
 
 ### Module Structure

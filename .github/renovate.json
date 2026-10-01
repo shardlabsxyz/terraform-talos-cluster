@@ -64,7 +64,8 @@
       "matchUpdateTypes": [
         "minor",
         "patch",
-        "digest"
+        "digest",
+        "pinDigest"
       ],
       "addLabels": [
         "automerge-candidate"
