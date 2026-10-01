@@ -7,7 +7,7 @@ terraform {
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = "< 8.0.0"
+      version = "< 9.0.0"
     }
     talos = {
       source  = "siderolabs/talos"
