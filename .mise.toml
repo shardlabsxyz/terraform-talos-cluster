@@ -2,7 +2,7 @@
 terraform = "1.16.4"
 terraform-docs = "0.24.0"
 tflint = "0.64.0"
-pre-commit = "4.6.2"
+pre-commit = "4.7.0"
 kubectl = "1.37.1"
 talosctl = "1.14.2"
 terraform-ls = "0.39.0"
