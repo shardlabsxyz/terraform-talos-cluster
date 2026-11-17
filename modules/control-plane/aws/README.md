@@ -389,7 +389,7 @@ module "node_pools" {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
 
 ## Providers
@@ -398,7 +398,7 @@ module "node_pools" {
 | ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
 | <a name="provider_external"></a> [external](#provider\_external) | ~> 2 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
 
 ## Modules
@@ -443,15 +443,15 @@ module "node_pools" {
 | [aws_security_group_rule.talos_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.talos_trustd](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_volume_attachment.ephemeral](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/volume_attachment) | resource |
-| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/cluster_kubeconfig) | resource |
-| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_bootstrap) | resource |
-| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_configuration_apply) | resource |
-| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_secrets) | resource |
+| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_bootstrap) | resource |
+| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_secrets) | resource |
 | [tls_private_key.irsa_oidc](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 | [aws_subnet.control_plane](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
 | [external_external.modulus](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 | [external_external.pub_der](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
-| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/machine_configuration) | data source |
+| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/machine_configuration) | data source |
 | [tls_certificate.irsa_oidc](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/data-sources/certificate) | data source |
 
 ## Inputs

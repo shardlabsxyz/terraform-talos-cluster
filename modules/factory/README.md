@@ -211,17 +211,17 @@ Images are stored in cloud storage and registered as cloud-native images. Consid
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | < 8.0.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 8.0.0 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | < 9.0.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 9.0.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 8.0.0 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 9.0.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
@@ -245,7 +245,7 @@ Images are stored in cloud storage and registered as cloud-native images. Consid
 | [google-beta_google_compute_image.this](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_compute_image) | resource |
 | [google-beta_google_storage_bucket_object.this](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_storage_bucket_object) | resource |
 | [terraform_data.this](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
-| [talos_image_factory_urls.this](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/image_factory_urls) | data source |
+| [talos_image_factory_urls.this](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/image_factory_urls) | data source |
 
 ## Inputs
 

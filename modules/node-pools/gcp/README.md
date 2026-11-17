@@ -10,23 +10,23 @@ Use it with the GCP control plane module outputs for Talos machine secrets, clie
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | < 8.0.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 8.0.0 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | < 9.0.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 9.0.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 8.0.0 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 9.0.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
 | <a name="module_node_pool_instance_template"></a> [node\_pool\_instance\_template](#module\_node\_pool\_instance\_template) | terraform-google-modules/vm/google//modules/instance_template | ~> 13 |
-| <a name="module_node_pool_mig"></a> [node\_pool\_mig](#module\_node\_pool\_mig) | terraform-google-modules/vm/google//modules/mig | ~> 13.0 |
+| <a name="module_node_pool_mig"></a> [node\_pool\_mig](#module\_node\_pool\_mig) | terraform-google-modules/vm/google//modules/mig | ~> 15.0 |
 
 ## Resources
 
@@ -34,10 +34,10 @@ Use it with the GCP control plane module outputs for Talos machine secrets, clie
 | ---- | ---- |
 | [google-beta_google_compute_firewall.node_pool_external](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_compute_firewall) | resource |
 | [google-beta_google_service_account.node_pool](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_service_account) | resource |
-| [talos_machine_configuration_apply.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_configuration_apply.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_configuration_apply) | resource |
 | [google-beta_google_compute_instance.node_pool_instance](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/google_compute_instance) | data source |
 | [google-beta_google_compute_region_instance_group.node_pool](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/google_compute_region_instance_group) | data source |
-| [talos_machine_configuration.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/machine_configuration) | data source |
+| [talos_machine_configuration.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/machine_configuration) | data source |
 
 ## Inputs
 

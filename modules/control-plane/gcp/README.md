@@ -10,24 +10,24 @@ Use it with the GCP node pool module when you want a cloud-hosted control plane 
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | < 8.0.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 8.0.0 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | < 9.0.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 9.0.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_google"></a> [google](#provider\_google) | < 8.0.0 |
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 8.0.0 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | < 9.0.0 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 9.0.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
 | <a name="module_control_plane_instance_template"></a> [control\_plane\_instance\_template](#module\_control\_plane\_instance\_template) | terraform-google-modules/vm/google//modules/instance_template | ~> 13 |
-| <a name="module_control_plane_mig"></a> [control\_plane\_mig](#module\_control\_plane\_mig) | terraform-google-modules/vm/google//modules/mig | ~> 13.0 |
+| <a name="module_control_plane_mig"></a> [control\_plane\_mig](#module\_control\_plane\_mig) | terraform-google-modules/vm/google//modules/mig | ~> 15.0 |
 
 ## Resources
 
@@ -41,13 +41,13 @@ Use it with the GCP node pool module when you want a cloud-hosted control plane 
 | [google-beta_google_compute_region_health_check.control_plane](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_compute_region_health_check) | resource |
 | [google-beta_google_compute_region_target_tcp_proxy.control_plane](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_compute_region_target_tcp_proxy) | resource |
 | [google-beta_google_service_account.control_plane](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_service_account) | resource |
-| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/cluster_kubeconfig) | resource |
-| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_bootstrap) | resource |
-| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_configuration_apply) | resource |
-| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_secrets) | resource |
+| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_bootstrap) | resource |
+| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_secrets) | resource |
 | [google-beta_google_compute_region_instance_group.control_plane](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/google_compute_region_instance_group) | data source |
 | [google_compute_instance.control_plane](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_instance) | data source |
-| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/machine_configuration) | data source |
+| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/machine_configuration) | data source |
 
 ## Inputs
 

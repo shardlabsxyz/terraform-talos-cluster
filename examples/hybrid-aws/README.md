@@ -14,7 +14,7 @@ It is the AWS reference deployment for this repository. Review the multi-region 
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 3 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 2.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.0, != 2.12 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
@@ -22,7 +22,7 @@ It is the AWS reference deployment for this repository. Review the multi-region 
 | ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
 | <a name="provider_aws.secondary"></a> [aws.secondary](#provider\_aws.secondary) | ~> 6.0 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 
 ## Modules
 
@@ -49,10 +49,10 @@ It is the AWS reference deployment for this repository. Review the multi-region 
 
 | Name | Type |
 | ---- | ---- |
-| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/cluster_kubeconfig) | resource |
 | [aws_availability_zones.primary](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [aws_availability_zones.secondary](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
-| [talos_client_configuration.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/client_configuration) | data source |
+| [talos_client_configuration.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/client_configuration) | data source |
 
 ## Inputs
 

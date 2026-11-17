@@ -13,13 +13,13 @@ Use it as a complete GCP reference deployment before adapting the module inputs 
 | <a name="requirement_google"></a> [google](#requirement\_google) | < 8.0.0 |
 | <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 8.0.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 3 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 
 ## Modules
 
@@ -36,9 +36,9 @@ Use it as a complete GCP reference deployment before adapting the module inputs 
 
 | Name | Type |
 | ---- | ---- |
-| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/cluster_kubeconfig) | resource |
-| [talos_client_configuration.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/client_configuration) | data source |
-| [talos_cluster_health.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/cluster_health) | data source |
+| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_client_configuration.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/client_configuration) | data source |
+| [talos_cluster_health.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/cluster_health) | data source |
 
 ## Inputs
 
