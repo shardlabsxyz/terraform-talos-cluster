@@ -40,7 +40,7 @@ module "irsa_s3_bucket" {
   count = var.irsa.enabled ? 1 : 0
 
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 5"
+  version = "~> 5.18"
 
   bucket_prefix = "${var.cluster_name}-irsa-oidc"
 
@@ -60,7 +60,7 @@ module "irsa_s3_bucket_object_openid-configuration" {
   count = var.irsa.enabled ? 1 : 0
 
   source  = "terraform-aws-modules/s3-bucket/aws//modules/object"
-  version = "~> 5"
+  version = "~> 5.18"
 
   bucket  = module.irsa_s3_bucket[0].s3_bucket_id
   key     = ".well-known/openid-configuration"
@@ -72,7 +72,7 @@ module "irsa_s3_bucket_object_keys_json" {
   count = var.irsa.enabled ? 1 : 0
 
   source  = "terraform-aws-modules/s3-bucket/aws//modules/object"
-  version = "~> 5"
+  version = "~> 5.18"
 
   bucket  = module.irsa_s3_bucket[0].s3_bucket_id
   key     = "keys.json"

@@ -3,19 +3,19 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "< 8.0.0"
+      version = ">= 8.12.0, < 9.0.0"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = "< 8.0.0"
+      version = ">= 8.12.0, < 9.0.0"
     }
     talos = {
       source  = "siderolabs/talos"
-      version = "0.11.0"
+      version = "0.12.0"
     }
     helm = {
       source  = "hashicorp/helm"
-      version = "~> 3"
+      version = "~> 3.3"
     }
   }
 }

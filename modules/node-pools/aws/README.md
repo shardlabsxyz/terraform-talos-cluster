@@ -48,8 +48,8 @@ module "node_pools" {
   vpc_id         = "vpc-12345678"
   talos_image_id = "ami-0123456789abcdef0"
 
-  kubernetes_version         = "v1.35.0"
-  talos_version              = "v1.12.2"
+  kubernetes_version         = "v1.36.6"
+  talos_version              = "v1.14.6"
   kubernetes_api_url         = module.control_plane.kubernetes_api_url
   talos_client_configuration = module.control_plane.talos_client_configuration
   talos_machine_secrets      = module.control_plane.talos_machine_secrets
@@ -304,8 +304,8 @@ data "talos_cluster_health" "talos" {
 | talos_client_configuration | Talos client config from control plane | `any` | n/a | yes |
 | talos_machine_secrets | Talos machine secrets from control plane | `any` | n/a | yes |
 | node_pools | Map of node pool configurations | `map(object)` | n/a | yes |
-| talos_version | Talos OS version | `string` | `"v1.12.2"` | no |
-| kubernetes_version | Kubernetes version | `string` | `"v1.35.0"` | no |
+| talos_version | Talos OS version | `string` | `"v1.14.6"` | no |
+| kubernetes_version | Kubernetes version | `string` | `"v1.36.6"` | no |
 | tags | Tags for all resources | `map(string)` | `{}` | no |
 
 ### Node Pool Configuration
@@ -414,3 +414,75 @@ This module follows the same patterns as the GCP node-pools module:
 | Scaling | `desired_capacity/min/max` | `target_size` |
 | Updates | `instance_refresh` | `update_policy` |
 | Output | `external_ips`, `private_ips` | `external_ips`, `private_ips` |
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+| ---- | ------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.73 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
+
+## Providers
+
+| Name | Version |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.73 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+| ---- | ---- |
+| [aws_autoscaling_group.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws_iam_instance_profile.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
+| [aws_iam_role.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [aws_launch_template.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws_security_group.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_vpc_security_group_egress_rule.all](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_egress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.icmp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.kubespan_wireguard](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.nodeport_tcp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.nodeport_udp](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
+| [aws_vpc_security_group_ingress_rule.talos_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_security_group_ingress_rule) | resource |
+| [talos_machine_configuration_apply.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_configuration_apply) | resource |
+| [aws_instance.node_pool_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/instance) | data source |
+| [aws_instances.node_pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/instances) | data source |
+| [aws_subnet.node_pool_subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
+| [talos_machine_configuration.node_pool](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/machine_configuration) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+| ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the Talos cluster. | `string` | n/a | yes |
+| <a name="input_kubernetes_api_url"></a> [kubernetes\_api\_url](#input\_kubernetes\_api\_url) | The URL of the Kubernetes API server. | `string` | n/a | yes |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The version of Kubernetes to deploy on the node pools. | `string` | `"v1.36.6"` | no |
+| <a name="input_node_pools"></a> [node\_pools](#input\_node\_pools) | Configuration for the worker node pools. | <pre>map(object({<br/>    # Instance configuration<br/>    instance_type    = string<br/>    desired_capacity = optional(number, 3)<br/>    min_size         = optional(number, 1)<br/>    max_size         = optional(number, 10)<br/><br/>    # Network configuration<br/>    subnet_ids          = list(string)<br/>    associate_public_ip = optional(bool, true)<br/><br/>    # Kubernetes node configuration<br/>    # Labels are applied via kubelet extraArgs and used for CA node templates<br/>    labels = optional(map(string), {})<br/><br/>    # Taints are applied via kubelet registerWithTaints and used for CA node templates<br/>    taints = optional(list(object({<br/>      key    = string<br/>      value  = string<br/>      effect = string # NoSchedule, NoExecute, or PreferNoSchedule<br/>    })), [])<br/><br/>    # Cluster Autoscaler - when enabled, ASG tags are auto-derived from labels/taints<br/>    enable_cluster_autoscaler = optional(bool, false)<br/><br/>    # Volume configuration (root volume only, ephemeral)<br/>    root_volume = optional(object({<br/>      size_gb               = optional(number, 50)<br/>      type                  = optional(string, "gp3")<br/>      iops                  = optional(number, 3000)<br/>      throughput            = optional(number, 125)<br/>      encrypted             = optional(bool, true)<br/>      delete_on_termination = optional(bool, true)<br/>    }), {})<br/><br/>    # Instance metadata (IMDSv2)<br/>    instance_metadata = optional(object({<br/>      http_tokens                 = optional(string, "required")<br/>      http_put_response_hop_limit = optional(number, 1)<br/>      instance_metadata_tags      = optional(string, "disabled")<br/>    }), {})<br/><br/>    # ASG configuration<br/>    health_check_type         = optional(string, "EC2")<br/>    health_check_grace_period = optional(number, 300)<br/>    default_cooldown          = optional(number, 300)<br/><br/>    # Launch template version control - when true, ASG uses $Latest version triggering instance refresh<br/>    update_launch_template_default_version = optional(bool, true)<br/><br/>    # Instance refresh configuration (always enabled, version controls when refresh happens)<br/>    instance_refresh = optional(object({<br/>      min_healthy_percentage       = optional(number, 90)<br/>      max_healthy_percentage       = optional(number, 100)<br/>      instance_warmup              = optional(number, 60)<br/>      checkpoint_delay             = optional(number)<br/>      checkpoint_percentages       = optional(list(number))<br/>      skip_matching                = optional(bool, false)<br/>      auto_rollback                = optional(bool, false)<br/>      scale_in_protected_instances = optional(string, "Ignore")<br/>      standby_instances            = optional(string, "Ignore")<br/>      alarm_specification = optional(object({<br/>        alarms = list(string)<br/>      }))<br/>    }), {})<br/><br/>    # Talos configuration patches (additional patches beyond labels/taints)<br/>    config_patches = optional(list(any), [])<br/><br/>    # Tags<br/>    tags = optional(map(string), {})<br/>  }))</pre> | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to all resources created by this module. | `map(string)` | `{}` | no |
+| <a name="input_talos_client_configuration"></a> [talos\_client\_configuration](#input\_talos\_client\_configuration) | Talos client configuration from the control plane. | `any` | n/a | yes |
+| <a name="input_talos_image_id"></a> [talos\_image\_id](#input\_talos\_image\_id) | Talos OS AMI ID. Use the cloud-images module to get the official AMI ID for your region. | `string` | n/a | yes |
+| <a name="input_talos_machine_secrets"></a> [talos\_machine\_secrets](#input\_talos\_machine\_secrets) | Talos machine secrets from the control plane. | `any` | n/a | yes |
+| <a name="input_talos_version"></a> [talos\_version](#input\_talos\_version) | The version of Talos OS to use for the node pool instances. | `string` | `"v1.14.6"` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC where node pools will be deployed. | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_external_ips"></a> [external\_ips](#output\_external\_ips) | External (public) IP addresses of all node pool instances |
+| <a name="output_iam_instance_profiles"></a> [iam\_instance\_profiles](#output\_iam\_instance\_profiles) | IAM instance profiles for node pools |
+| <a name="output_iam_roles"></a> [iam\_roles](#output\_iam\_roles) | IAM roles for node pools |
+| <a name="output_instances"></a> [instances](#output\_instances) | Node pool instances by pool (similar to GCP instances output) |
+| <a name="output_instances_ips_by_pools"></a> [instances\_ips\_by\_pools](#output\_instances\_ips\_by\_pools) | Instance IPs organized by pool (matches GCP structure) |
+| <a name="output_launch_templates"></a> [launch\_templates](#output\_launch\_templates) | Node pool launch templates |
+| <a name="output_node_pools"></a> [node\_pools](#output\_node\_pools) | Node pool Auto Scaling Groups |
+| <a name="output_private_ips"></a> [private\_ips](#output\_private\_ips) | Private IP addresses of all node pool instances |
+| <a name="output_security_groups"></a> [security\_groups](#output\_security\_groups) | Security groups for node pools |
+<!-- END_TF_DOCS -->

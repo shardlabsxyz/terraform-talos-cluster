@@ -70,7 +70,7 @@ This architecture allows replacing a control plane instance without losing its i
 ```hcl
 module "talos_ami" {
   source        = "github.com/shardlabsxyz/terraform-talos-cluster//modules/cloud-images/aws"
-  talos_version = "v1.12.2"
+  talos_version = "v1.14.6"
   region        = "us-west-2"
 }
 
@@ -80,8 +80,8 @@ module "control_plane" {
   cluster_name       = "my-cluster"
   vpc_id             = "vpc-12345678"
   talos_image_id     = module.talos_ami.ami_id
-  kubernetes_version = "v1.35.0"
-  talos_version      = "v1.12.2"
+  kubernetes_version = "v1.36.6"
+  talos_version      = "v1.14.6"
 
   control_plane = {
     instance_type = "m6i.large"
@@ -107,8 +107,8 @@ module "control_plane" {
   cluster_name       = "my-cluster"
   vpc_id             = "vpc-12345678"
   talos_image_id     = module.talos_ami.ami_id
-  kubernetes_version = "v1.35.0"
-  talos_version      = "v1.12.2"
+  kubernetes_version = "v1.36.6"
+  talos_version      = "v1.14.6"
 
   control_plane = {
     instance_type = "m6i.large"
@@ -160,8 +160,8 @@ module "control_plane" {
   cluster_name       = "production-cluster"
   vpc_id             = module.vpc.vpc_id
   talos_image_id     = module.talos_ami.ami_id
-  kubernetes_version = "v1.35.0"
-  talos_version      = "v1.12.2"
+  kubernetes_version = "v1.36.6"
+  talos_version      = "v1.14.6"
 
   control_plane = {
     instance_type = "m6i.xlarge"
@@ -245,8 +245,8 @@ module "control_plane" {
   cluster_name       = "private-cluster"
   vpc_id             = module.vpc.vpc_id
   talos_image_id     = module.talos_ami.ami_id
-  kubernetes_version = "v1.35.0"
-  talos_version      = "v1.12.2"
+  kubernetes_version = "v1.36.6"
+  talos_version      = "v1.14.6"
 
   control_plane = {
     instance_type = "m6i.large"
@@ -272,8 +272,8 @@ module "control_plane" {
 | `cluster_name` | Name of the Talos cluster (alphanumeric, hyphens, max 63 chars) | `string` | n/a | yes |
 | `vpc_id` | VPC ID for control plane resources | `string` | n/a | yes |
 | `talos_image_id` | Talos AMI ID (use cloud-images/aws module to get this) | `string` | n/a | yes |
-| `kubernetes_version` | Kubernetes version | `string` | `"v1.35.0"` | no |
-| `talos_version` | Talos OS version | `string` | `"v1.12.2"` | no |
+| `kubernetes_version` | Kubernetes version | `string` | `"v1.36.6"` | no |
+| `talos_version` | Talos OS version | `string` | `"v1.14.6"` | no |
 | `control_plane` | Control plane configuration (see below) | `object` | n/a | yes |
 | `irsa` | IRSA configuration | `object` | `{ enabled = true }` | no |
 | `nlb` | Network Load Balancer configuration | `object` | `{}` | no |
@@ -387,27 +387,27 @@ module "node_pools" {
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2 |
-| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.11.0 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.73 |
+| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.4 |
+| <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | ~> 4.4 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
-| <a name="provider_external"></a> [external](#provider\_external) | ~> 2 |
-| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.11.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.73 |
+| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.4 |
+| <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | ~> 4.4 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| <a name="module_irsa_s3_bucket"></a> [irsa\_s3\_bucket](#module\_irsa\_s3\_bucket) | terraform-aws-modules/s3-bucket/aws | ~> 5 |
-| <a name="module_irsa_s3_bucket_object_keys_json"></a> [irsa\_s3\_bucket\_object\_keys\_json](#module\_irsa\_s3\_bucket\_object\_keys\_json) | terraform-aws-modules/s3-bucket/aws//modules/object | ~> 5 |
-| <a name="module_irsa_s3_bucket_object_openid-configuration"></a> [irsa\_s3\_bucket\_object\_openid-configuration](#module\_irsa\_s3\_bucket\_object\_openid-configuration) | terraform-aws-modules/s3-bucket/aws//modules/object | ~> 5 |
+| <a name="module_irsa_s3_bucket"></a> [irsa\_s3\_bucket](#module\_irsa\_s3\_bucket) | terraform-aws-modules/s3-bucket/aws | ~> 5.18 |
+| <a name="module_irsa_s3_bucket_object_keys_json"></a> [irsa\_s3\_bucket\_object\_keys\_json](#module\_irsa\_s3\_bucket\_object\_keys\_json) | terraform-aws-modules/s3-bucket/aws//modules/object | ~> 5.18 |
+| <a name="module_irsa_s3_bucket_object_openid-configuration"></a> [irsa\_s3\_bucket\_object\_openid-configuration](#module\_irsa\_s3\_bucket\_object\_openid-configuration) | terraform-aws-modules/s3-bucket/aws//modules/object | ~> 5.18 |
 
 ## Resources
 
@@ -443,15 +443,15 @@ module "node_pools" {
 | [aws_security_group_rule.talos_api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.talos_trustd](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_volume_attachment.ephemeral](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/volume_attachment) | resource |
-| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/cluster_kubeconfig) | resource |
-| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_bootstrap) | resource |
-| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_configuration_apply) | resource |
-| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/resources/machine_secrets) | resource |
+| [talos_cluster_kubeconfig.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/cluster_kubeconfig) | resource |
+| [talos_machine_bootstrap.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_bootstrap) | resource |
+| [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_configuration_apply) | resource |
+| [talos_machine_secrets.talos](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/resources/machine_secrets) | resource |
 | [tls_private_key.irsa_oidc](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 | [aws_subnet.control_plane](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet) | data source |
 | [external_external.modulus](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 | [external_external.pub_der](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
-| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.11.0/docs/data-sources/machine_configuration) | data source |
+| [talos_machine_configuration.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.12.0/docs/data-sources/machine_configuration) | data source |
 | [tls_certificate.irsa_oidc](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/data-sources/certificate) | data source |
 
 ## Inputs
@@ -462,12 +462,12 @@ module "node_pools" {
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the Talos cluster. | `string` | n/a | yes |
 | <a name="input_control_plane"></a> [control\_plane](#input\_control\_plane) | Configuration for the control plane instances. | <pre>object({<br/>    # Default instance type (can be overridden per node)<br/>    instance_type = string<br/>    subnet_ids    = list(string)<br/><br/>    # Root volume configuration (global)<br/>    root_volume = optional(object({<br/>      size_gb               = optional(number, 5)<br/>      type                  = optional(string, "gp3")<br/>      iops                  = optional(number, 3000)<br/>      throughput            = optional(number, 125)<br/>      encrypted             = optional(bool, true)<br/>      kms_key_id            = optional(string)<br/>      delete_on_termination = optional(bool, true)<br/>    }), {})<br/><br/>    # Ephemeral volume configuration (persistent EBS for Talos EPHEMERAL partition - /var)<br/>    ephemeral_volume = optional(object({<br/>      enabled    = optional(bool, true)<br/>      size_gb    = optional(number, 50)<br/>      type       = optional(string, "gp3")<br/>      iops       = optional(number, 3000)<br/>      throughput = optional(number, 125)<br/>      encrypted  = optional(bool, true)<br/>      kms_key_id = optional(string)<br/>    }), {})<br/><br/>    # Instance metadata configuration (IMDSv2)<br/>    instance_metadata_options = optional(object({<br/>      http_tokens                 = optional(string, "required")<br/>      http_put_response_hop_limit = optional(number, 1)<br/>      instance_metadata_tags      = optional(string, "disabled")<br/>    }), {})<br/><br/>    # Tags (global)<br/>    tags = optional(map(string), {})<br/><br/>    # Talos configuration patches (global, applied to all nodes)<br/>    config_patches = optional(list(any), [])<br/><br/>    # Per-node configuration - map with explicit node keys<br/>    # Each node MUST specify a private_ip for stable etcd identity<br/>    nodes = map(object({<br/>      subnet_id      = optional(string)     # Override AZ for this node (defaults to round-robin)<br/>      private_ip     = optional(string)     # Fixed private IP for ENI (required for stable etcd identity)<br/>      instance_type  = optional(string)     # Override instance type for this node<br/>      enable_eip     = optional(bool, true) # Whether to attach an Elastic IP<br/>      config_patches = optional(list(any))  # Additional Talos config patches for this node<br/>      tags           = optional(map(string))<br/>      root_volume = optional(object({<br/>        size_gb               = optional(number)<br/>        type                  = optional(string)<br/>        iops                  = optional(number)<br/>        throughput            = optional(number)<br/>        encrypted             = optional(bool)<br/>        kms_key_id            = optional(string)<br/>        delete_on_termination = optional(bool)<br/>      }), {})<br/>      ephemeral_volume = optional(object({<br/>        enabled               = optional(bool)<br/>        size_gb               = optional(number)<br/>        type                  = optional(string)<br/>        iops                  = optional(number)<br/>        throughput            = optional(number)<br/>        encrypted             = optional(bool)<br/>        kms_key_id            = optional(string)<br/>        delete_on_termination = optional(bool)<br/>      }), {})<br/>      instance_metadata_options = optional(object({<br/>        http_tokens                 = optional(string)<br/>        http_put_response_hop_limit = optional(number)<br/>        instance_metadata_tags      = optional(string)<br/>      }), {})<br/>    }))<br/><br/>  })</pre> | n/a | yes |
 | <a name="input_irsa"></a> [irsa](#input\_irsa) | Configuration for IAM Roles for Service Accounts (IRSA). | <pre>object({<br/>    enabled = optional(bool, true)<br/>  })</pre> | <pre>{<br/>  "enabled": true<br/>}</pre> | no |
-| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The version of Kubernetes to deploy on the Talos control plane. | `string` | `"v1.35.0"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The version of Kubernetes to deploy on the Talos control plane. | `string` | `"v1.36.6"` | no |
 | <a name="input_nlb"></a> [nlb](#input\_nlb) | Network Load Balancer configuration for Kubernetes API and Talos API. | <pre>object({<br/>    internal                         = optional(bool, false)<br/>    enable_cross_zone_load_balancing = optional(bool, true)<br/>    enable_deletion_protection       = optional(bool, true)<br/><br/>    # Kubernetes API target group configuration<br/>    k8s_api = optional(object({<br/>      deregistration_delay = optional(number, 10)<br/>      health_check = optional(object({<br/>        enabled             = optional(bool, true)<br/>        interval            = optional(number, 10)<br/>        healthy_threshold   = optional(number, 2)<br/>        unhealthy_threshold = optional(number, 10)<br/>        timeout             = optional(number, 5)<br/>        port                = optional(number, 6443)<br/>        protocol            = optional(string, "TCP")<br/>      }), {})<br/>    }), {})<br/><br/>    # Talos API target group configuration<br/>    talos_api = optional(object({<br/>      deregistration_delay = optional(number, 10)<br/>      health_check = optional(object({<br/>        enabled             = optional(bool, true)<br/>        interval            = optional(number, 10)<br/>        healthy_threshold   = optional(number, 2)<br/>        unhealthy_threshold = optional(number, 10)<br/>        timeout             = optional(number, 5)<br/>      }), {})<br/>    }), {})<br/><br/>    tags = optional(map(string), {})<br/>  })</pre> | `{}` | no |
 | <a name="input_security_group"></a> [security\_group](#input\_security\_group) | Security group configuration for control plane instances. | <pre>object({<br/>    # Additional ingress rules<br/>    additional_ingress_rules = optional(list(object({<br/>      description = string<br/>      from_port   = number<br/>      to_port     = number<br/>      protocol    = string<br/>      cidr_blocks = list(string)<br/>    })), [])<br/><br/>    # Additional egress rules (default allows all outbound)<br/>    additional_egress_rules = optional(list(object({<br/>      description = string<br/>      from_port   = number<br/>      to_port     = number<br/>      protocol    = string<br/>      cidr_blocks = list(string)<br/>    })), [])<br/><br/>    # Allowed CIDR blocks for API access<br/>    k8s_api_ingress_cidr_blocks        = optional(list(string), ["0.0.0.0/0"])<br/>    talos_api_ingress_cidr_blocks      = optional(list(string), ["0.0.0.0/0"])<br/>    talos_trustd_ingress_cidr_blocks   = optional(list(string), ["0.0.0.0/0"])<br/>    talos_kubespan_ingress_cidr_blocks = optional(list(string), ["0.0.0.0/0"])<br/><br/>    tags = optional(map(string), {})<br/>  })</pre> | `{}` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to all resources created by this module. | `map(string)` | `{}` | no |
 | <a name="input_talos_image_id"></a> [talos\_image\_id](#input\_talos\_image\_id) | Talos OS AMI ID. Use the cloud-images module to get the official AMI ID for your region. | `string` | n/a | yes |
-| <a name="input_talos_version"></a> [talos\_version](#input\_talos\_version) | The version of Talos OS to use for the control plane instances. | `string` | `"v1.12.2"` | no |
+| <a name="input_talos_version"></a> [talos\_version](#input\_talos\_version) | The version of Talos OS to use for the control plane instances. | `string` | `"v1.14.6"` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | ID of the VPC where control plane will be deployed. | `string` | n/a | yes |
 
 ## Outputs

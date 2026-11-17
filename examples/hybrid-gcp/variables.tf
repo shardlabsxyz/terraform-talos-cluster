@@ -25,11 +25,11 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   description = "The version of Kubernetes to deploy."
   type        = string
-  default     = "v1.34.2"
+  default     = "v1.36.6"
 }
 
 variable "talos_version" {
   description = "The version of Talos OS to use."
   type        = string
-  default     = "v1.12.1"
+  default     = "v1.14.6"
 }

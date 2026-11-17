@@ -16,26 +16,26 @@ variable "region" {
 variable "talos_version" {
   description = "The version of Talos OS to use for the control plane instances."
   type        = string
-  default     = "v1.12.1"
+  default     = "v1.14.6"
 }
 
 variable "talos_image" {
   description = "The Talos OS image details."
   type = object({
     family  = optional(string, "talos")
-    name    = optional(string, "talos-v1-11-6-gcp-amd64")
+    name    = optional(string, "talos-v1-14-6-gcp-amd64")
     project = optional(string)
   })
   default = {
     family = "talos"
-    name   = "talos-v1-11-6-gcp-amd64"
+    name   = "talos-v1-14-6-gcp-amd64"
   }
 }
 
 variable "kubernetes_version" {
   description = "The version of Kubernetes to deploy on the Talos control plane."
   type        = string
-  default     = "v1.35.0"
+  default     = "v1.36.6"
 }
 
 variable "kubernetes_api_url" {

@@ -1,7 +1,7 @@
 module "gcs_bucket" {
   count      = var.image_upload_platform == "gcp" && var.gcp.create_bucket ? 1 : 0
   source     = "terraform-google-modules/cloud-storage/google"
-  version    = "~> 12.0"
+  version    = "~> 12.4"
   project_id = var.gcp.project_id
   names      = [var.gcp.bucket_name]
 }

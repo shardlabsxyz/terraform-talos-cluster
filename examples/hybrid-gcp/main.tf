@@ -31,7 +31,7 @@ module "factory_gcp" {
 
 module "network" {
   source  = "terraform-google-modules/network/google"
-  version = "~> 13.0"
+  version = "~> 18.3"
 
   project_id                   = var.project_id
   network_name                 = var.cluster_name
@@ -72,7 +72,7 @@ module "network" {
 
 module "network_secondary" {
   source  = "terraform-google-modules/network/google"
-  version = "~> 13.0"
+  version = "~> 18.3"
 
   project_id                   = var.project_id
   network_name                 = "${var.cluster_name}-secondary"
@@ -191,7 +191,7 @@ moved {
 }
 
 module "cilium" {
-  source = "github.com/shardlabsxyz/terraform-kubernetes-addons//modules/talos?ref=v1.5.0"
+  source = "github.com/shardlabsxyz/terraform-kubernetes-addons//modules/talos?ref=v1.11.0"
 
   cluster_name = var.cluster_name
 
