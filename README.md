@@ -191,25 +191,35 @@ talosctl --talosconfig talosconfig dashboard
 
 ## Upgrading
 
+The module and example defaults now target Talos **v1.14.6** and Kubernetes **v1.36.6**. Terraform **1.13.0** remains the minimum supported runtime; the development toolchain uses **1.17.2**.
+
+Kubernetes 1.36 is within the tested compatibility range of [Cilium 1.20](https://github.com/cilium/cilium/blob/v1.20.2/Documentation/network/kubernetes/compatibility.rst), supplied by the example add-on release, and the [Talos 1.14 support matrix](https://docs.siderolabs.com/talos/v1.14/getting-started/support-matrix).
+
+For existing clusters, explicitly set `talos_version` and `kubernetes_version` to your current versions before upgrading the modules. Review the Terraform plan and follow the Talos and Kubernetes supported upgrade sequence before advancing those inputs. Updating these defaults is not a substitute for upgrading the running nodes.
+
+The GCP modules now require Google and Google Beta providers **8.12 or newer, below 9.0**, and use VM modules **15.4 or newer, below 16.0**. The examples use Kubernetes add-ons **v1.11.0**. The AWS example keeps Kubernetes provider **3.3.x** and kubectl provider **2.x** to satisfy that add-on release's constraints. Run `terraform init -upgrade` when adopting these dependency changes and review the resulting plan before applying it.
+
 ### Upgrade Talos OS
+
+Talos 1.14 uses [Image Factory installer images](https://docs.siderolabs.com/talos/v1.14/configure-your-talos-cluster/lifecycle-management/upgrading-talos). Replace `<schematic-id>` with the schematic used for the node's image to preserve its system extensions. For an image without customizations, use `376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba`.
 
 ```bash
 # Upgrade control plane nodes (one at a time)
 talosctl --talosconfig talosconfig upgrade \
   --nodes <node-ip> \
-  --image ghcr.io/siderolabs/installer:v1.12.2
+  --image "factory.talos.dev/metal-installer/<schematic-id>:v1.14.6"
 
 # Upgrade worker nodes
 talosctl --talosconfig talosconfig upgrade \
   --nodes <worker-ip> \
-  --image ghcr.io/siderolabs/installer:v1.12.2
+  --image "factory.talos.dev/metal-installer/<schematic-id>:v1.14.6"
 ```
 
 ### Upgrade Kubernetes
 
 ```bash
 talosctl --talosconfig talosconfig upgrade-k8s \
-  --to 1.35.0
+  --to 1.36.6
 ```
 
 ## Security Considerations

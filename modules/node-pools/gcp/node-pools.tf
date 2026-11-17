@@ -91,7 +91,7 @@ resource "google_compute_firewall" "node_pool_external" {
 module "node_pool_instance_template" {
   for_each = var.node_pools
   source   = "terraform-google-modules/vm/google//modules/instance_template"
-  version  = "~> 13"
+  version  = "~> 15.4"
 
   nic_type       = "GVNIC"
   can_ip_forward = true
@@ -131,7 +131,7 @@ module "node_pool_instance_template" {
 module "node_pool_mig" {
   for_each          = var.node_pools
   source            = "terraform-google-modules/vm/google//modules/mig"
-  version           = "~> 15.0"
+  version           = "~> 15.4"
   region            = coalesce(each.value.region, var.region)
   project_id        = var.project_id
   target_size       = each.value.target_size

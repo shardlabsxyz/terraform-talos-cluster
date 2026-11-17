@@ -35,7 +35,7 @@ For standard Talos images without extensions, use the simpler [cloud-images/aws]
 module "talos_factory" {
   source = "github.com/shardlabsxyz/terraform-talos-cluster//modules/factory"
 
-  talos_version         = "v1.12.2"
+  talos_version         = "v1.14.6"
   talos_platform        = "aws"
   talos_architecture    = "amd64"
   image_upload_platform = "aws"
@@ -64,7 +64,7 @@ module "control_plane" {
 module "talos_factory" {
   source = "github.com/shardlabsxyz/terraform-talos-cluster//modules/factory"
 
-  talos_version         = "v1.12.2"
+  talos_version         = "v1.14.6"
   talos_platform        = "gcp"
   talos_architecture    = "amd64"
   image_upload_platform = "gcp"
@@ -95,7 +95,7 @@ If you already have a bucket for storing images:
 module "talos_factory" {
   source = "github.com/shardlabsxyz/terraform-talos-cluster//modules/factory"
 
-  talos_version         = "v1.12.2"
+  talos_version         = "v1.14.6"
   talos_platform        = "aws"
   image_upload_platform = "aws"
 
@@ -124,7 +124,7 @@ The module uses a default schematic ID that includes common extensions. To use a
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| `talos_version` | Talos OS version | `string` | `"v1.11.6"` | no |
+| `talos_version` | Talos OS version | `string` | `"v1.14.6"` | no |
 | `talos_platform` | Target platform (aws, gcp) | `string` | n/a | yes |
 | `talos_architecture` | CPU architecture (amd64, arm64) | `string` | `"amd64"` | no |
 | `image_upload_platform` | Cloud to upload image to (aws, gcp) | `string` | n/a | yes |
@@ -210,17 +210,17 @@ Images are stored in cloud storage and registered as cloud-native images. Consid
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | < 9.0.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | < 9.0.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 6.73 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 8.12.0, < 9.0.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | >= 8.12.0, < 9.0.0 |
 | <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.12.0 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.0 |
-| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | < 9.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 6.73 |
+| <a name="provider_google-beta"></a> [google-beta](#provider\_google-beta) | >= 8.12.0, < 9.0.0 |
 | <a name="provider_talos"></a> [talos](#provider\_talos) | 0.12.0 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
@@ -228,8 +228,8 @@ Images are stored in cloud storage and registered as cloud-native images. Consid
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| <a name="module_gcs_bucket"></a> [gcs\_bucket](#module\_gcs\_bucket) | terraform-google-modules/cloud-storage/google | ~> 12.0 |
-| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | terraform-aws-modules/s3-bucket/aws | ~> 5 |
+| <a name="module_gcs_bucket"></a> [gcs\_bucket](#module\_gcs\_bucket) | terraform-google-modules/cloud-storage/google | ~> 12.4 |
+| <a name="module_s3_bucket"></a> [s3\_bucket](#module\_s3\_bucket) | terraform-aws-modules/s3-bucket/aws | ~> 5.18 |
 
 ## Resources
 
@@ -256,7 +256,7 @@ Images are stored in cloud storage and registered as cloud-native images. Consid
 | <a name="input_image_upload_platform"></a> [image\_upload\_platform](#input\_image\_upload\_platform) | n/a | `string` | n/a | yes |
 | <a name="input_talos_architecture"></a> [talos\_architecture](#input\_talos\_architecture) | n/a | `string` | `"amd64"` | no |
 | <a name="input_talos_platform"></a> [talos\_platform](#input\_talos\_platform) | n/a | `string` | n/a | yes |
-| <a name="input_talos_version"></a> [talos\_version](#input\_talos\_version) | n/a | `string` | `"v1.11.6"` | no |
+| <a name="input_talos_version"></a> [talos\_version](#input\_talos\_version) | n/a | `string` | `"v1.14.6"` | no |
 
 ## Outputs
 

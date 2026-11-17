@@ -1,8 +1,8 @@
 [tools]
 terraform = "1.17.2"
-terraform-docs = "0.24.0"
+terraform-docs = "0.25.1"
 tflint = "0.66.0"
 pre-commit = "4.7.0"
-kubectl = "1.37.1"
+kubectl = "1.37.2"
 talosctl = "1.14.6"
-terraform-ls = "0.39.0"
+terraform-ls = "0.39.1"

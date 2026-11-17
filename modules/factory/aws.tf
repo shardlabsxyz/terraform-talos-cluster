@@ -1,7 +1,7 @@
 module "s3_bucket" {
   count   = var.image_upload_platform == "aws" && var.aws.create_bucket ? 1 : 0
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 5"
+  version = "~> 5.18"
   region  = var.aws.region
   bucket  = var.aws.bucket_name
 }

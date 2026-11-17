@@ -122,7 +122,7 @@ resource "google_compute_region_health_check" "control_plane" {
 
 module "control_plane_instance_template" {
   source  = "terraform-google-modules/vm/google//modules/instance_template"
-  version = "~> 13"
+  version = "~> 15.4"
 
   nic_type       = "GVNIC"
   can_ip_forward = true
@@ -161,7 +161,7 @@ module "control_plane_instance_template" {
 
 module "control_plane_mig" {
   source             = "terraform-google-modules/vm/google//modules/mig"
-  version            = "~> 15.0"
+  version            = "~> 15.4"
   region             = var.region
   project_id         = var.project_id
   target_size        = var.control_plane.target_size

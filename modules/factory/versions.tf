@@ -7,15 +7,15 @@ terraform {
     }
     google = {
       source  = "hashicorp/google"
-      version = "< 9.0.0"
+      version = ">= 8.12.0, < 9.0.0"
     }
     google-beta = {
       source  = "hashicorp/google-beta"
-      version = "< 9.0.0"
+      version = ">= 8.12.0, < 9.0.0"
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
+      version = "~> 6.73"
     }
   }
 }

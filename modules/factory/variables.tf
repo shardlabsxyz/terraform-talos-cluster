@@ -1,6 +1,6 @@
 variable "talos_version" {
   type    = string
-  default = "v1.11.6"
+  default = "v1.14.6"
 }
 
 variable "talos_platform" {

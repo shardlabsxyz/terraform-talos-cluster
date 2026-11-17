@@ -4,7 +4,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
+      version = "~> 6.73"
     }
     talos = {
       source  = "siderolabs/talos"
@@ -12,11 +12,11 @@ terraform {
     }
     tls = {
       source  = "hashicorp/tls"
-      version = "~> 4.0"
+      version = "~> 4.4"
     }
     external = {
       source  = "hashicorp/external"
-      version = "~> 2"
+      version = "~> 2.4"
     }
   }
 }

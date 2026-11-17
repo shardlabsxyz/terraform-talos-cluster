@@ -31,7 +31,7 @@ variable "vpc_id" {
 variable "talos_version" {
   description = "The version of Talos OS to use for the control plane instances."
   type        = string
-  default     = "v1.12.2"
+  default     = "v1.14.6"
 
   validation {
     condition     = can(regex("^v[0-9]+\\.[0-9]+\\.[0-9]+$", var.talos_version))
@@ -47,7 +47,7 @@ variable "talos_image_id" {
 variable "kubernetes_version" {
   description = "The version of Kubernetes to deploy on the Talos control plane."
   type        = string
-  default     = "v1.35.0"
+  default     = "v1.36.6"
 
   validation {
     condition     = can(regex("^v[0-9]+\\.[0-9]+\\.[0-9]+$", var.kubernetes_version))
